@@ -1,0 +1,353 @@
+:root {
+    --primary: #2E7D32;
+    --secondary: #81C784;
+    --light: #E8F5E9;
+    --dark: #1B5E20;
+    --accent: #FFC107;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: white;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.hero {
+    background-image: url(FolderGambar/backround.jpg);
+    background-size: cover;
+    color: white;
+    padding: 5rem 0;
+    height: 80vh;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.imgproduk{
+    height: 15rem;
+}
+
+.card-img-top{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark);
+    border-color: var(--dark);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 3rem 0;
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent);
+    color: black;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent);
+    color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.quantity-container input{
+    width: 1rem;
+}
+
+.wadah-gambar{
+    width: 20vmax;
+    aspect-ratio: 4 / 3;
+}
+
+.wadah-gambar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ .profil-cover .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .profil-cover .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profil-cover  .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .profil-cover  .nav-links li {
+            margin-left: 20px;
+        }
+
+        .profil-cover   .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profil-cover  .profile-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profil-cover  .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profil-cover  .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #4CAF50;
+            margin-right: 30px;
+        }
+
+        .profil-cover  .profile-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profil-cover  .user-type {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .profil-cover  .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .profil-cover  .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profil-cover  .profile-section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .profil-cover  .profile-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .profil-cover  .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .profil-cover  .detail-label {
+            width: 140px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .profil-cover  .detail-value {
+            flex: 1;
+            color: #333;
+        }
+
+        .profil-cover  .order-card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .profil-cover  .order-card:hover {
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profil-cover  .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profil-cover  .order-id {
+            font-weight: 600;
+        }
+
+        .profil-cover  .order-status {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .profil-cover  .status-delivered {
+            background-color: #4CAF50;
+        }
+
+        .profil-cover  .status-processing {
+            background-color: #2196F3;
+        }
+
+        .profil-cover  .order-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .profil-cover  .order-date, .order-total {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .profil-cover  .order-total {
+            font-weight: 600;
+        }
+
+        .profil-cover .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .profil-cover .btn:hover {
+            background-color: #45a049;
+        }
+
+        .profil-cover  .btn-secondary {
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .profil-cover  .btn-secondary:hover {
+            background-color: #e9e9e9;
+        }
+
+        .profil-cover  .edit-profile {
+            margin-top: 20px;
+        }
+
+        .profil-cover  .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .order-detail .gambar-order {
+            width: 20rem; 
+        }
