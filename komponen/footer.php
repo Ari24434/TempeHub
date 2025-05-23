@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h4 class="mb-4" id="Kontak">Tempe Triple "A"</h4>
+                    <h4 class="mb-4" id="Kontak">TempeHub</h4>
                     <p>Sistem informasi penjualan dan distribusi tempe online yang memudahkan Anda mendapatkan tempe berkualitas langsung dari produsen.</p>
                     <div class="d-flex mt-3">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
@@ -26,7 +26,7 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jl. Lkr. Utara, Suka Agung, Kec.Buay Bahuga</li>
                         <li class="mb-2"><i class="fas fa-phone me-2"></i>083172994022</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@Tempe Gurih</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@TempeHub</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
