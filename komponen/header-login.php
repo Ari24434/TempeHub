@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Tempe Triple "A"</a>
+            <a class="navbar-brand" href="#">Tempe Hub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,7 +37,7 @@
                           <li><a class="dropdown-item" href="?menu=2">Profil</a></li>
                           <li><a class="dropdown-item" href="?menu=1">Reseller</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                          <li><a class="dropdown-item" href="/komponen/logout.php">Logout</a></li>
                         </ul>
                       </div>
                 </div>

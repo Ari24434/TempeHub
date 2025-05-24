@@ -8,7 +8,7 @@
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="stat-card1-content">
-                    <h3>2.400.00</h3>
+                    <h3>2.400.000</h3>
                     <p>Pendapatan Total</p>
                     <div class="growth">
                     </div>

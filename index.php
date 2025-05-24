@@ -14,8 +14,24 @@
 <body>
 
  <?php
-    include "koneksi.php";
-        include "komponen/header.php";
+        session_start();
+        include "koneksi.php";
+        if (isLoggedIn()) {
+            include 'komponen/header-login.php';
+        } else {
+            include 'komponen/header.php';
+        }
+        ?>
+        <?php if (isset($_SESSION['login_success']) && $_SESSION['login_success']): ?>
+        <script>
+            alert('Anda berhasil login!');
+        </script>
+        <?php 
+            unset($_SESSION['login_success']); // hapus agar tidak muncul lagi setelah refresh
+        endif; 
+        ?>
+
+<?php
         switch($_GET ['menu'] ?? 0){
             case 1 :
                 include __DIR__ . "/komponen/reseller.php";

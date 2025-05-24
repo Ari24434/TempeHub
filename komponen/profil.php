@@ -99,7 +99,7 @@
                     <div class="order-card">
                         <div class="order-header">
                             <div class="order-id">Order</div>
-                            <div class="order-status status-processing">Sedang Diproses</div>
+                            <div class="order-status status-processing btn-success">Sedang Diproses</div>
                         </div>
                         <div class="order-details">
                             <div class="order-date">28 April 2025</div>

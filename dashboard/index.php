@@ -13,6 +13,7 @@
 </head>
 <body class ="d-flex">
     <?php 
+    include "../koneksi.php";
     include "komponen/sidebar.php";
     ?>
     <main class="w-100">

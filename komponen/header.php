@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Tempe Triple "A"</a>
+            <a class="navbar-brand" href="#">Tempe Hub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,26 +36,41 @@
             </div>
         </div>
 </nav>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    if (login($email, $password)) {
+       $_SESSION['login_success'] = true;
+        header("Location: index.php");
+        exit;
+    } else {
+        $error = 'Email atau password salah!';
+    }
+}
+?>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+<div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="mb-3">
+          <form action="" method="post">
+              <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukan E-Mail">
+                <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukan E-Mail">
               </div>
               <label for="inputPassword5" class="form-label">Password</label>
-<input type="password" id="inputPassword5" placeholder="Masukan Password" class="form-control" aria-describedby="passwordHelpBlock">
+              <input name="password" type="password" id="inputPassword5" placeholder="Masukan Password" class="form-control" aria-describedby="passwordHelpBlock">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary">Login</button>
         </div>
+          </form>
       </div>
     </div>
   </div>

@@ -8,15 +8,15 @@
                         <a type="button" data-bs-toggle="modal" data-bs-target="#tempebiasaModal">
                             <span class="product-badge">Terlaris</span>
                             <div class="imgproduk">
-                            <img src="FolderGambar/TempeBiasa.jpg" class="card-img-top" alt="Tempe Original">   
+                            <img src="/FolderGambar/TempeBiasa2.png" class="card-img-top" alt="Tempe Original">   
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Tempe Biasa</h5>
                                 <p class="card-text">Tempe berkualitas tinggi dengan kedelai pilihan, segar dan higienis.</p>
-                                <p class="fw-bold text-primary mb-3">Rp 8.000</p>
+                                <p class="fw-bold text-success mb-3">Rp 8.000</p>
                                 <div class="d-flex">
-                                    <button class="btn btn-primary flex-grow-1">Beli</button>
-                                    <button class="btn btn-outline-primary ms-2"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-success flex-grow-1">Beli</button>
+                                    <button class="btn btn-outline-success ms-2"><i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>
                         </a>
@@ -31,7 +31,7 @@
                             </div>
                             <div class="modal-body d-flex gap-3">
                                 <div class="wadah-gambar w-100">
-                                    <img src="FolderGambar/TempeBiasa.jpg" class="card-img-top" alt="Tempe Original">
+                                    <img src="/FolderGambar/TempeBiasa2.png" class="card-img-top" alt="Tempe Original">
                                 </div>
                                 <div class="modal-kontent w-100">
                                     <div class="text d-flex flex-column">
@@ -90,8 +90,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary rounded-0">Beli</button>
-                                <button class="btn btn-outline-primary rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                                <button type="button" class="btn btn-success rounded-0">Beli</button>
+                                <button class="btn btn-outline-success rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
                             </div>
                         </div>
                     </div>
@@ -101,15 +101,15 @@
                     <div class="card h-100">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#tempebiasaModal1">
                             <div class="imgproduk">
-                            <img src="/FolderGambar/TempeDaun.jpg" class="card-img-top" alt="Tempe Original">   
+                            <img src="/FolderGambar/TempeDaun2.png" class="card-img-top" alt="Tempe Original">   
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Tempe Bungkus Daun</h5>
                                 <p class="card-text">Tempe dari kedelai hitam dengan kandungan antioksidan tinggi.</p>
-                                <p class="fw-bold text-primary mb-3">Rp 12.000</p>
+                                <p class="fw-bold text-success mb-3">Rp 12.000</p>
                                 <div class="d-flex">
-                                    <button class="btn btn-primary flex-grow-1">Beli</button>
-                                    <button class="btn btn-outline-primary ms-2"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-success flex-grow-1">Beli</button>
+                                    <button class="btn btn-outline-success ms-2"><i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>
                         </a>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="modal-body d-flex gap-3">
                                 <div class="wadah-gambar w-100">
-                                    <img src="/FolderGambar/TempeDaun.jpg" class="card-img-top" alt="Tempe Original">
+                                    <img src="/FolderGambar/TempeDaun2.png" class="card-img-top" alt="Tempe Original">
                                 </div>
                                 <div class="modal-kontent w-100">
                                     <div class="text d-flex flex-column">
@@ -183,8 +183,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary rounded-0">Beli</button>
-                                <button class="btn btn-outline-primary rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                                <button type="button" class="btn btn-success rounded-0">Beli</button>
+                                <button class="btn btn-outline-success rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
                             </div>
                         </div>
                     </div>
@@ -195,15 +195,15 @@
                         <a type="button" data-bs-toggle="modal" data-bs-target="#tempeMini">
                             <span class="product-badge">Baru</span>
                             <div class="imgproduk">
-                            <img src="/FolderGambar/TempeMIni.jpg" class="card-img-top" alt="Tempe Original">   
+                            <img src="/FolderGambar/TempeMini2.png" class="card-img-top" alt="Tempe Original">   
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Tempe Mini</h5>
                                 <p class="card-text">Tempe gembus yang lembut, cocok untuk berbagai olahan masakan.</p>
-                                <p class="fw-bold text-primary mb-3">Rp 6.000</p>
+                                <p class="fw-bold text-success mb-3">Rp 6.000</p>
                                 <div class="d-flex">
-                                    <button class="btn btn-primary flex-grow-1">Beli</button>
-                                    <button class="btn btn-outline-primary ms-2"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-success flex-grow-1">Beli</button>
+                                    <button class="btn btn-outline-success ms-2"><i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>
                         </a>
@@ -218,7 +218,7 @@
                             </div>
                             <div class="modal-body d-flex gap-3">
                                 <div class="wadah-gambar w-100">
-                                    <img src="/FolderGambar/TempeMIni.jpg" class="card-img-top" alt="Tempe Original">
+                                    <img src="/FolderGambar/TempeMini2.png" class="card-img-top" alt="Tempe Original">
                                 </div>
                                 <div class="modal-kontent w-100">
                                     <div class="text d-flex flex-column">
@@ -277,8 +277,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary rounded-0">Beli</button>
-                                <button class="btn btn-outline-primary rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                                <button type="button" class="btn btn-success rounded-0">Beli</button>
+                                <button class="btn btn-outline-success rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
                             </div>
                         </div>
                     </div>
@@ -288,15 +288,15 @@
                     <div class="card h-100">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#tempebulat">
                             <div class="imgproduk">
-                            <img src="/FolderGambar/tempe bulat.jpg" class="card-img-top" alt="Tempe Original">   
+                            <img src="/FolderGambar/TempeBulat2.png" class="card-img-top" alt="Tempe Original">   
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">Tempe Bulat</h5>
                                 <p class="card-text">Tempe bulat ini mudah digunakan sebagai isian makanan ringan, gorengan, atau lauk praktis.</p>
-                                <p class="fw-bold text-primary mb-3">Rp 7.000</p>
+                                <p class="fw-bold text-success mb-3">Rp 7.000</p>
                                 <div class="d-flex">
-                                    <button class="btn btn-primary flex-grow-1">Beli</button>
-                                    <button class="btn btn-outline-primary ms-2"><i class="fas fa-cart-plus"></i></button>
+                                    <button class="btn btn-success flex-grow-1">Beli</button>
+                                    <button class="btn btn-outline-success ms-2"><i class="fas fa-cart-plus"></i></button>
                                 </div>
                             </div>
                         </a>
@@ -311,7 +311,7 @@
                             </div>
                             <div class="modal-body d-flex gap-3">
                                 <div class="wadah-gambar w-100">
-                                    <img src="/FolderGambar/tempe bulat.jpg" class="card-img-top" alt="Tempe Original">
+                                    <img src="/FolderGambar/TempeBulat2.png" class="card-img-top" alt="Tempe Original">
                                 </div>
                                 <div class="modal-kontent w-100">
                                     <div class="text d-flex flex-column">
@@ -370,8 +370,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary rounded-0">Beli</button>
-                                <button class="btn btn-outline-primary rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
+                                <button type="button" class="btn btn-success rounded-0">Beli</button>
+                                <button class="btn btn-outline-success rounded-0"><i class="fas fa-cart-plus"></i> Keranjang</button>
                             </div>
                         </div>
                     </div>

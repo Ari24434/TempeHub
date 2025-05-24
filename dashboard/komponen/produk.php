@@ -16,7 +16,7 @@
                                         <h3 class="mb-0">350</h3>
                                     </div>
                                     <div class="icon-bg bg-light p-3 rounded">
-                                        <i class="fas fa-box text-primary"></i>
+                                        <i class="fas fa-box text-success"></i>
                                     </div>
                                 </div>
                                 <div class="mt-2">
@@ -61,84 +61,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        
+                                    <?php
+                                    $dataproduk = tampilproduk("SELECT * FROM produk");
+                                    ?>
+                                    <?php foreach ($dataproduk as $data): ?>
+                                    <tr> 
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="me-3">
-                                                    <img src="/FolderGambar/TempeBiasa.jpg" alt="Product Image" class="rounded" width="50">
+                                                    <img src="/FolderGambar/<?= $data["foto_produk"] ?>" alt="Product Image" class="rounded" width="50">
                                                 </div>
                                                 <div>
-                                                    <h6 class="mb-0">Tempe Biasa</h6>
+                                                    <h6 class="mb-0"><?= $data["nama_produk"] ?></h6>
                                                     <small class="text-muted"></small>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>WH-1001</td>
-                                        <td>Olahan</td>
-                                        <td>8.000</td>
-                                        <td>100</td>
+                                        <td><?= $data["id_produk"] ?></td>
+                                        <td><?= $data["kategori"] ?></td>
+                                        <td><?= $data["harga"] ?></td>
+                                        <td><?= $data["stok"] ?></td>
                                         <td><span class="badge bg-success">Ada</span></td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <img src="/FolderGambar/TempeDaun.jpg" alt="Product Image" class="rounded" width="50">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0">Tempe Bungkus Daun</h6>
-                                                    <small class="text-muted"></small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>SW-2234</td>
-                                        <td>Tradisional</td>
-                                        <td>12.000</td>
-                                        <td>100</td>
-                                        <td><span class="badge bg-success">Ada</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <img src="/FolderGambar/TempeMIni.jpg" alt="Product Image" class="rounded" width="50">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0">Tempe Mini</h6>
-                                                    <small class="text-muted"></small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>LW-5532</td>
-                                        <td>Cemilan</td>
-                                        <td>6.000</td>
-                                        <td>0</td>
-                                        <td><span class="badge bg-danger">Habis</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <img src="/FolderGambar/tempe bulat.jpg" alt="Product Image" class="rounded" width="50">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-0">Tempe Bulat</h6>
-                                                    <small class="text-muted"></small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>SC-3321</td>
-                                        <td>Olahan</td>
-                                        <td>7.000</td>
-                                        <td>100</td>
-                                        <td><span class="badge bg-warning text-dark">Menipis</span></td>
-                                    </tr>
-                                    <tr>
-                                        </td>
-                                    
-                                        </td>
-                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
