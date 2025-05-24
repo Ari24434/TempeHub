@@ -32,7 +32,7 @@
                 <div class="col-md-3">
                     <h5 class="mb-4">Metode Pembayaran</h5>
                         <div class="bg-white text-dark p-2 m-1 rounded">
-                            <i class="fas fa-wallet text-primary"></i> DANA
+                            <i class="fas fa-wallet text-primary"></i> BRI
                         </div>
                     </div>
                 </div>
