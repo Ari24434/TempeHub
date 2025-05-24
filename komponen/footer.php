@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h4 class="mb-4" id="Kontak">Tempe Hub</h4>
+                    <h4 class="mb-4" id="Kontak">TempeHub</h4>
                     <p>Sistem informasi penjualan dan distribusi tempe online yang memudahkan Anda mendapatkan tempe berkualitas langsung dari produsen.</p>
                     <div class="d-flex mt-3">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
