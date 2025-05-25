@@ -18,7 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="lead mb-5 fw-bold">Pesan Tempe Segar Berkualitas Tinggi Untuk Kebutuhan Sehari-Hari Atau Bisnis Anda Secara Online Dengan Mudah Dan Cepat</p>
             <div class="d-flex justify-content-center">
                 <a href="#produk" class="btn btn-light btn-lg me-3 fw-bold">Belanja Sekarang</a>
-                <a href="?menu=4" class="btn btn-outline-light btn-lg me-3 fw-bold">Daftar Reseller</a>
+                <?php
+                if (!isset($_SESSION['user'])) {        
+                    echo '<a href="?menu=4" class="btn btn-outline-light btn-lg me-3 fw-bold">Daftar Reseller</a>';
+                } elseif ($_SESSION['user']['tipe_akun'] !== 'reseller') {
+                    echo '<a href="?menu=4" class="btn btn-outline-light btn-lg me-3 fw-bold">Daftar Reseller</a>';
+                }
+                ?>
+
             </div>
         </div>
     </section>
@@ -38,7 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $data["nama_produk"]; ?></h5>
                     <p class="card-text desk"><?php echo $data["deskripsi"]; ?></p>
-                    <p class="fw-bold text-success mb-3"><?php echo $data["harga"]; ?></p>
+                    <p class="fw-bold text-success mb-3">Rp.
+                        <?php
+                    if (!isset($_SESSION['user'])) {
+                        echo $data["harga"];
+                    } elseif ($_SESSION['user']['tipe_akun'] !== 'reseller') {
+                        echo $data["harga"];
+                    } else {
+                        echo $data["harga"] - 2000;
+                    }
+                    ?>
+                    </p>
                 </div>
             </a>
         </div>

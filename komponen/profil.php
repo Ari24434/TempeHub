@@ -4,8 +4,8 @@
         <div class="profile-header">
             <div class="profile-avatar">FA</div>
             <div class="profile-info">
-                <h1>Affifatul Mukaromah</h1>
-                <div class="user-type">Pelanggan</div>
+                <h1><?= $_SESSION["user"]["username"] ?></h1>
+                <div class="user-type"><?= $_SESSION["user"]["tipe_akun"] ?></div>
                 <p>Bergabung sejak 3 April 2025</p>
             </div>
         </div>
@@ -19,19 +19,15 @@
                     <div class="profile-details">
                         <div class="detail-row">
                             <div class="detail-label">Nama Lengkap</div>
-                            <div class="detail-value">Affifatul Mukaromah</div>
+                            <div class="detail-value"><?= $_SESSION["user"]["username"] ?></div>
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">Email</div>
-                            <div class="detail-value">affifatul@email.com</div>
-                        </div>
-                        <div class="detail-row">
-                            <div class="detail-label">No. Telepon</div>
-                            <div class="detail-value">081234567890</div>
+                            <div class="detail-value"><?= $_SESSION["user"]["email"] ?></div>
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">Tipe Akun</div>
-                            <div class="detail-value">Pelanggan</div>
+                            <div class="detail-value"><?= $_SESSION["user"]["tipe_akun"] ?></div>
                         </div>
                     </div>
                     <div class="edit-profile">

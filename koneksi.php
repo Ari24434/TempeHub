@@ -1,9 +1,11 @@
 <?php
     $koneksi= mysqli_connect("localhost","root","","toko_tempe");
 
+    if (!function_exists('isLoggedIn')) {
     function isLoggedIn() {
-    return isset($_SESSION['user']);
+        return isset($_SESSION['user']);
     }
+}
 
     function daftar($daftar){
         global $koneksi;
@@ -89,37 +91,39 @@ function tambahKeKeranjang($id_user, $id_produk, $qty = 1) {
 }
 
 function getKeranjangByUser($koneksi, $id_user) {
-    $query = "
-        SELECT k.qty, p.nama_produk, p.harga, p.foto_produk, p.id_produk
-        FROM keranjang k
-        JOIN produk p ON k.id_produk = p.id_produk
-        WHERE k.id_user = ?
-    ";
-
+    $query = "SELECT 
+                k.id_keranjang,
+                k.id_produk,
+                k.qty,
+                p.nama_produk,
+                p.harga,
+                p.foto_produk
+              FROM keranjang k
+              JOIN produk p ON k.id_produk = p.id_produk
+              WHERE k.id_user = ?";
+    
     $stmt = $koneksi->prepare($query);
-    if (!$stmt) {
-        return ['status' => false, 'error' => $koneksi->error];
-    }
-
     $stmt->bind_param("i", $id_user);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $keranjang = [];
+    $data = [];
     while ($row = $result->fetch_assoc()) {
-        $keranjang[] = $row;
+        $data[] = $row;
     }
 
-    return ['status' => true, 'data' => $keranjang];
+    if (count($data) > 0) {
+        return ['status' => true, 'data' => $data];
+    } else {
+        return ['status' => false, 'data' => []];
+    }
 }
 
-function hapusKeranjangItem($koneksi, $id_user, $id_produk) {
-    $query = "DELETE FROM keranjang WHERE id_user = ? AND id_produk = ?";
-    $stmt = mysqli_prepare($koneksi, $query);
-    mysqli_stmt_bind_param($stmt, "ii", $id_user, $id_produk);
-    $success = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    return $success;
+function kosongkanKeranjang($koneksi, $id_user) {
+    $query = "DELETE FROM keranjang WHERE id_user = ?";
+    $stmt = $koneksi->prepare($query);
+    $stmt->bind_param("i", $id_user);
+    return $stmt->execute();
 }
+
 

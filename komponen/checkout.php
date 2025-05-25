@@ -32,7 +32,7 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
                     <h5 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i>Alamat Pengiriman</h5>
                     <div class="mb-3">
                         <label for="address" class="form-label">Alamat Lengkap *</label>
-                        <textarea class="form-control" id="address" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+                        <textarea class="form-control" id="address" rows="3" name="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
                 <!-- Catatan -->
                 <div class="form-section1">
                     <h5 class="mb-3"><i class="fas fa-sticky-note me-2"></i>Catatan Tambahan</h5>
-                    <textarea class="form-control" id="notes" rows="3" placeholder="Catatan untuk penjual (opsional)"></textarea>
+                    <textarea class="form-control" id="notes" name="catatan" rows="3" placeholder="Catatan untuk penjual (opsional)"></textarea>
                 </div>
             </form>
         </div>
@@ -126,11 +126,12 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between fs-5 fw-bold">
-                        <input type="hidden" name="total_subtotal" value="<?= $total ?>">
+                        <input type="hidden" name="total_subtotal" id="input_subtotal" value="<?= $total ?>">
                         <input type="hidden" name="total_ongkir" id="input_ongkir" value="3000">
                         <input type="hidden" name="total_bayar" id="input_total" value="<?= $total + 3000 ?>">
+
                         <span>Total</span>
-                        <span id="total-cost">Rp 2.348.170</span>
+                        <span id="total-cost">Rp <?= number_format($total + 3000, 0, ',', '.') ?></span>
                     </div>
                 </div>
 
@@ -152,7 +153,96 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
         </div>
     </div>
 </div>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-M9wHfTZ_CV_nJKf3"></script>
+<script>
+document.getElementById('pay-button').addEventListener('click', function () {
+    const form = document.getElementById('checkoutForm');
+    const formData = new FormData(form);
+    formData.append('total_subtotal', document.getElementById('input_subtotal').value);
+    formData.append('total_ongkir', document.getElementById('input_ongkir').value);
+    formData.append('total_bayar', document.getElementById('input_total').value);
 
+    const ongkirValue = document.querySelector('input[name="shipping"]:checked').value === 'express' ? 5000 : 3000;
+    formData.append('ongkir', ongkirValue);
+
+    const formObj = {
+        nama: formData.get('username'),
+        email: formData.get('email'),
+        telp: formData.get('no-telp'),
+        alamat: formData.get('alamat'),
+        pengiriman: formData.get('shipping'),
+        ongkir: formData.get('ongkir'),
+        subtotal: formData.get('total_subtotal'),
+        total: formData.get('total_bayar')
+    };
+
+    // Simpan ke session jika perlu
+    fetch('/komponen/storeSession.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formObj)
+    });
+
+    // Kirim request ke Midtrans, PENTING: pakai return!
+    return fetch('/komponen/midtransAPI.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.token) {
+            snap.pay(data.token, {
+                onSuccess: function(result) {
+                    const formData = new FormData(form);
+                    const payload = {
+                        order_id: result.order_id,
+                        transaction_status: result.transaction_status,
+                        gross_amount: result.gross_amount,
+                        id_user: <?= $id_user ?>,
+                        nama_lengkap: formData.get('username'),
+                        email: formData.get('email'),
+                        no_telp: formData.get('no-telp'),
+                        alamat: formData.get('alamat'),
+                        catatan: formData.get('catatan'),
+                        metode_pengiriman: formData.get('shipping'),
+                        ongkir: document.getElementById('input_ongkir').value,
+                        subtotal: document.getElementById('input_subtotal').value,
+                        total: document.getElementById('input_total').value
+                    };
+
+                    fetch('/komponen/saveTransaction.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(res => res.json())
+                    .then(response => {
+                        if (response.status === 'success') {
+                            alert('Transaksi berhasil disimpan!');
+                            window.location.href = '/thankyou.php';
+                        } else {
+                            alert('Gagal menyimpan transaksi.');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Error saat menyimpan transaksi:', err);
+                    });
+                }
+            });
+        } else {
+            alert('Gagal mendapatkan token pembayaran');
+            console.error(data.error);
+        }
+    })
+    .catch(err => {
+        alert('Terjadi kesalahan!');
+        console.error(err);
+    });
+});
+
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const shippingRadios = document.querySelectorAll('input[name="shipping"]');
@@ -161,50 +251,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const subtotal = <?= $total ?>;
 
     function updateTotal() {
-        let selected = document.querySelector('input[name="shipping"]:checked');
-        let shippingCost = selected.value === 'express' ? 5000 : 3000;
-        shippingCostDisplay.textContent = 'Rp ' + shippingCost.toLocaleString('id-ID');
-        let total = subtotal + shippingCost;
-        totalCostDisplay.textContent = 'Rp ' + total.toLocaleString('id-ID');
-    }
+    let selected = document.querySelector('input[name="shipping"]:checked');
+    let shippingCost = selected.value === 'express' ? 5000 : 3000;
+    shippingCostDisplay.textContent = 'Rp ' + shippingCost.toLocaleString('id-ID');
+    let total = subtotal + shippingCost;
+    totalCostDisplay.textContent = 'Rp ' + total.toLocaleString('id-ID');
+
+    document.getElementById('input_ongkir').value = shippingCost;
+    document.getElementById('input_total').value = total;
+}
+
 
     shippingRadios.forEach(radio => {
         radio.addEventListener('change', updateTotal);
     });
 
     updateTotal();
-});
-</script>
-
-<script>
-document.getElementById('pay-button').addEventListener('click', function () {
-    const form = document.getElementById('checkoutForm');
-    const formData = new FormData(form);
-
-    // Tambahkan ongkir dari pilihan radio
-    const shipping = document.querySelector('input[name="shipping"]:checked');
-    if (shipping.value === 'express') {
-        formData.append('ongkir', 5000);
-    } else {
-        formData.append('ongkir', 3000);
-    }
-
-    fetch('/komponen/midtransAPI.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            // Show Snap payment popup
-            window.snap.pay(data.token);
-        } else {
-            alert('Gagal mendapatkan token: ' + data.error);
-            console.error(data);
-        }
-    })
-    .catch(error => {
-        console.error('Terjadi kesalahan saat request token:', error);
-    });
 });
 </script>

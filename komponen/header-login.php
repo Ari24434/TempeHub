@@ -35,7 +35,6 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                           <li><a class="dropdown-item" href="?menu=2">Profil</a></li>
-                          <li><a class="dropdown-item" href="?menu=1">Reseller</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="/komponen/logout.php">Logout</a></li>
                         </ul>
