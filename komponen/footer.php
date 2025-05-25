@@ -25,14 +25,14 @@
                     <h5 class="mb-4">Kontak Kami</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jl. Lkr. Utara, Suka Agung, Kec.Buay Bahuga</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i>083172994022</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>083897916102</li>
                         <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@Tempe Hub</li>
                     </ul>
                 </div>
                 <div class="col-md-3">
                     <h5 class="mb-4">Metode Pembayaran</h5>
                         <div class="bg-white text-dark p-2 m-1 rounded">
-                            <i class="fas fa-wallet text-primary"></i> DANA
+                            <i class="fas fa-wallet text-primary"></i> BRI
                         </div>
                     </div>
                 </div>
