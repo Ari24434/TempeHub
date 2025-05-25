@@ -1,21 +1,17 @@
 <?php
-$dataproduk = tampilproduk("SELECT * FROM produk");
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_produk'], $_POST['quantity'])) {
-            $user_id = $_SESSION['user']['id_user'];
-            $product_id = (int)$_POST['id_produk'];
-            $quantity = max(1, (int)$_POST['quantity']);
+$dataproduk = tampilproduk("SELECT * FROM produk"); 
 
-            if (tambahKeKeranjang($user_id, $product_id, $quantity)) {
-                echo "
-                <script> document.location.href = 'index.php?menu=3'; </script>
-                ";
-                exit;
-            } else {
-                $error = "Gagal menambah produk ke keranjang.";
-            }
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_user = $_SESSION['user']['id_user'];
+    $id_produk = $_POST['id_produk'];
+    $qty = isset($_POST['qty']) ? (int) $_POST['qty'] : 1;
 
+    tambahKeKeranjang($id_user, $id_produk, $qty);
+
+    echo "<script>alert('Produk berhasil ditambahkan ke keranjang'); window.location='index.php?menu=3';</script>";
+}
 ?>
+
     <section class="hero" id="beranda">
         <div class="container text-center">
             <h1 class="display-4 fw-bold mb-4">Tempe Berkualitas Langsung Dari Produsen</h1>
@@ -68,16 +64,11 @@ $dataproduk = tampilproduk("SELECT * FROM produk");
                                 <p class="card-text mt-3"><?php echo $data["deskripsi"]; ?></p>
                             </div>
                             <div class="d-flex gap-2 mt-3">
-                               <form action="" method="post">
-                                    <div class="d-flex align-items-center justify-content-end gap-3">
-                                        <button type="button" class="border-0 bg-transparent text-danger" onclick="decrement()"><i class="fa-solid fa-minus"></i></button>
-                                        <input name="quantity" type="number" id="quantity" value="1" min="1" class="form-control w-50 text-center" readonly>
-                                        <button type="button" class="border-0 bg-transparent text-danger" onclick="increment()"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                    <input type="hidden" name="id_produk" value="<?= $data['id_produk'] ?>">
-                                    <button type="submit" class="btn btn-success fw-semibold rounded-0 w-100 mt-3">Tambah ke Keranjang</button>
-                                </form>
-
+                            <form action="" method="post">
+                                <input type="hidden" name="id_produk" value="<?= $data['id_produk'] ?>">
+                                <input type="number" name="qty" value="1" min="1" class="form-control mb-2" style="width: 80px;">
+                                <button type="submit" class="btn btn-success">+ Keranjang</button>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -325,7 +316,7 @@ $dataproduk = tampilproduk("SELECT * FROM produk");
             <p class="lead mb-4">Bergabunglah dengan ribuan pelanggan yang puas dengan produk dan layanan kami</p>
         </div>
     </section>
-
+    
         <script>
             function increment() {
             const input = document.getElementById("quantity");
@@ -338,7 +329,8 @@ $dataproduk = tampilproduk("SELECT * FROM produk");
                 input.value = parseInt(input.value) - 1;
             }
         }
-
+    
         </script>
 
 
+    

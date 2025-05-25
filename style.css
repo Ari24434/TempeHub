@@ -351,3 +351,53 @@ footer {
         .order-detail .gambar-order {
             width: 20rem; 
         }
+
+.product-image1 {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .checkout-header1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+        }
+        .form-section1 {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-summary1 {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            position: sticky;
+            top: 20px;
+        }
+        .btn-checkout1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        .btn-checkout:hover1 {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .product-item1 {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+        .product-item:last-child1 {
+            border-bottom: none;
+        }
+        .price-breakdown1 {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }

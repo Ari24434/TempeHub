@@ -5,7 +5,6 @@
     return isset($_SESSION['user']);
     }
 
-
     function daftar($daftar){
         global $koneksi;
 
@@ -21,6 +20,37 @@
         return mysqli_affected_rows($koneksi);
     }
 
+function loginUser($email, $password) {
+    global $koneksi;
+
+    $stmt = $koneksi->prepare("SELECT * FROM akun_user WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+
+        if (password_verify($password, $user['password'])) {
+            // Kembalikan seluruh data user
+            return [
+                'status' => true,
+                'user' => [
+                    'id_user' => $user['id_user'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                    'tipe_akun' => $user['tipe_akun']
+                ]
+            ];
+        } else {
+            return ['status' => false, 'error' => 'Password salah'];
+        }
+    } else {
+        return ['status' => false, 'error' => 'Email tidak ditemukan'];
+    }
+}
+
+
     function tampilproduk($query){
         global $koneksi;
 
@@ -32,49 +62,64 @@
         return $row;
     }
 
-    function login($email, $password) {
+function tambahKeKeranjang($id_user, $id_produk, $qty = 1) {
     global $koneksi;
 
-    $stmt = $koneksi->prepare("SELECT * FROM akun_user WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    // Cek apakah produk sudah ada di keranjang user
+    $stmt = $koneksi->prepare("SELECT * FROM keranjang WHERE id_user = ? AND id_produk = ?");
+    $stmt->bind_param("ii", $id_user, $id_produk);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($user = $result->fetch_assoc()) {
-        if (password_verify($password, $user['password'])) {
-            session_regenerate_id(true);
-            $_SESSION['user'] = $user['email']; 
-            return true;
-        }
-    }
-    return false;
-}
-    function tambahKeKeranjang($user_id, $product_id, $quantity) {
-    global $koneksi;
-
-    $query = $koneksi->prepare("SELECT qty FROM keranjang WHERE id_user = ? AND id_produk = ?");
-    $query->bind_param("ii", $user_id, $product_id);
-    $query->execute();
-    $result = $query->get_result();
-
     if ($result->num_rows > 0) {
+        // Produk sudah ada, update qty
+        $row = $result->fetch_assoc();
+        $new_qty = $row['qty'] + $qty;
 
-        $array = $result->fetch_assoc();
-        $new_qty = $array['qty'] + $quantity;
-
-        $update = $koneksi->prepare("UPDATE keranjnag SET qty = ? WHERE id_user = ? AND id_produk = ?");
-        $update->bind_param("iii", $new_qty, $user_id, $product_id);
+        $update = $koneksi->prepare("UPDATE keranjang SET qty = ? WHERE id_keranjang = ?");
+        $update->bind_param("ii", $new_qty, $row['id_keranjang']);
         $update->execute();
-
-        return $update->affected_rows > 0;
     } else {
-
+        // Produk belum ada, insert baru
         $insert = $koneksi->prepare("INSERT INTO keranjang (id_user, id_produk, qty) VALUES (?, ?, ?)");
-        $insert->bind_param("iii", $user_id, $product_id, $quantity);
+        $insert->bind_param("iii", $id_user, $id_produk, $qty);
         $insert->execute();
-
-        return $insert->affected_rows > 0;
     }
+    return true;
 }
-    
-?>
+
+function getKeranjangByUser($koneksi, $id_user) {
+    $query = "
+        SELECT k.qty, p.nama_produk, p.harga, p.foto_produk, p.id_produk
+        FROM keranjang k
+        JOIN produk p ON k.id_produk = p.id_produk
+        WHERE k.id_user = ?
+    ";
+
+    $stmt = $koneksi->prepare($query);
+    if (!$stmt) {
+        return ['status' => false, 'error' => $koneksi->error];
+    }
+
+    $stmt->bind_param("i", $id_user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $keranjang = [];
+    while ($row = $result->fetch_assoc()) {
+        $keranjang[] = $row;
+    }
+
+    return ['status' => true, 'data' => $keranjang];
+}
+
+function hapusKeranjangItem($koneksi, $id_user, $id_produk) {
+    $query = "DELETE FROM keranjang WHERE id_user = ? AND id_produk = ?";
+    $stmt = mysqli_prepare($koneksi, $query);
+    mysqli_stmt_bind_param($stmt, "ii", $id_user, $id_produk);
+    $success = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $success;
+}
+

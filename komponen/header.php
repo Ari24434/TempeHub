@@ -37,16 +37,18 @@
         </div>
 </nav>
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    if (login($email, $password)) {
-       $_SESSION['login_success'] = true;
-        header("Location: index.php");
+    $result = loginUser($email, $password);
+
+    if ($result['status']) {
+        $_SESSION['user'] = $result['user'];
+        header("Location: index.php"); // arahkan ke halaman utama
         exit;
     } else {
-        $error = 'Email atau password salah!';
+        echo "<script>alert('" . $result['error'] . "'); window.history.back();</script>";
     }
 }
 ?>

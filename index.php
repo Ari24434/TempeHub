@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script type="text/javascript"
+		src="https://app.stg.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-M9wHfTZ_CV_nJKf3"></script>
 </head>
 <body>
 
@@ -29,8 +32,9 @@
         <?php 
             unset($_SESSION['login_success']); // hapus agar tidak muncul lagi setelah refresh
         endif; 
+        
         ?>
-
+    
 <?php
         switch($_GET ['menu'] ?? 0){
             case 1 :
@@ -39,11 +43,14 @@
             case 2 :
                 include __DIR__ ."/komponen/profil.php";
                 break;
+            case 3 :
+                include __DIR__ ."/komponen/keranjang.php";
+                break;
             case 4 :
                 include __DIR__ ."/komponen/daftar-reseller.php";
                 break;
-              case 3 :
-                include __DIR__ ."/komponen/keranjang.php";
+            case 5 :
+                include __DIR__ ."/komponen/checkout.php";
                 break;
             default :
                 include "komponen/beranda_tempe.php";
