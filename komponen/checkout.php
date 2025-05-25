@@ -136,9 +136,10 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
 
                 <!-- Promo Code -->
                 <!-- Checkout Button -->
-                <button id="pay-button" form="checkoutForm" class="btn btn-primary btn-checkout w-100 mt-4">
+                <button type="button" id="pay-button" class="btn btn-primary btn-checkout w-100 mt-4">
                     <i class="fas fa-shopping-bag me-2"></i>Proses Pembayaran
                 </button>
+
 
                 <!-- Security Info -->
                 <div class="text-center mt-3">
@@ -151,17 +152,8 @@ $produk_keranjang = $result['status'] ? $result['data'] : [];
         </div>
     </div>
 </div>
-   <script type="text/javascript">
-      // For example trigger on button clicked, or any time you need
-      var payButton = document.getElementById('pay-button');
-      payButton.addEventListener('click', function () {
-        // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-        window.snap.pay('TRANSACTION_TOKEN_HERE');
-        // customer will be redirected after completing payment pop-up
-      });
-    </script>
 
-    <script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const shippingRadios = document.querySelectorAll('input[name="shipping"]');
     const shippingCostDisplay = document.getElementById('shipping-cost');
@@ -181,5 +173,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     updateTotal();
+});
+</script>
+
+<script>
+document.getElementById('pay-button').addEventListener('click', function () {
+    const form = document.getElementById('checkoutForm');
+    const formData = new FormData(form);
+
+    // Tambahkan ongkir dari pilihan radio
+    const shipping = document.querySelector('input[name="shipping"]:checked');
+    if (shipping.value === 'express') {
+        formData.append('ongkir', 5000);
+    } else {
+        formData.append('ongkir', 3000);
+    }
+
+    fetch('/komponen/midtransAPI.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.token) {
+            // Show Snap payment popup
+            window.snap.pay(data.token);
+        } else {
+            alert('Gagal mendapatkan token: ' + data.error);
+            console.error(data);
+        }
+    })
+    .catch(error => {
+        console.error('Terjadi kesalahan saat request token:', error);
+    });
 });
 </script>

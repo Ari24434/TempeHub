@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Tempe Triple "A"</title>
+    <title>Dashboard - TempeHub</title>
     <link rel="stylesheet" href="style.css?v=<?= time(); ?>">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -23,10 +23,10 @@
                 include __DIR__ . "/komponen/produk.php";
                 break;
             case 2 :
-                include __DIR__ ."/komponen/order.php";
+                include __DIR__ . "/komponen/order.php";
                 break;
             case 3 :
-                include __DIR__ ."/komponen/customers.php";
+                include __DIR__ . "/komponen/customers.php";
                 break;
             default;
             include __DIR__ . "/komponen/beranda-dashboard.php";
